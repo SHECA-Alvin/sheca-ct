@@ -1,0 +1,35 @@
+{
+  "description": "ct-2027h2-sunlight.sheca.com",
+  "friendly_name": "ct-2027h2",
+  "submission_url": "https://ct-2027h2-sunlight.sheca.com/",
+  "monitoring_url": "https://ct-2027h2-bucket.sheca.com/",
+  "temporal_interval": {
+    "start_inclusive": "2027-07-01T00:00:00Z",
+    "end_exclusive": "2028-01-01T00:00:00Z"
+  },
+  "log_id": "4dKdGNWYRqtrkGI4apITCdTpLfH53HY9uCEBs7uuIdc=",
+  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkVFqxc87Jbp+gh24G7/+9D4CfY3jiOgKM6958e732nkSdPXVkf+hecmjU+MzrnFGbgPrg16aucNxVok6ntBaaw==",
+  "mmd": 60,
+  "log_spec": "static-ct-api",
+  "mmd_seconds": 60,
+  "tls_only": true,
+  "intended_use": "production",
+  "status": "active",
+  "status_timestamp": "2026-09-21T00:00:00Z",
+  "planned_changes": [
+    {
+      "new_status": "readonly",
+      "effective_date": "2028-01-08T00:00:00Z"
+    }
+  ],
+  "submission_endpoint": {
+    "url": "https://ct-2027h2-sunlight.sheca.com/"
+  },
+  "monitoring_endpoint": {
+    "url": "https://ct-2027h2-bucket.sheca.com/"
+  },
+  "log_software": {
+    "name": "filippo.io/sunlight",
+    "version": "v0.9.0"
+  }
+}

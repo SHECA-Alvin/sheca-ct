@@ -1,6 +1,6 @@
 # Sunlight CT Environment Guide
 
-English | [简体中文](readme_cn.md)
+English | [Simplified Chinese](readme_cn.md)
 
 This document describes the existing deployment based on the provided test and production `sunlight.yaml` files and deployment details. Configuration files are stored separately for each environment. The remote services have not been verified at runtime as part of this documentation work.
 

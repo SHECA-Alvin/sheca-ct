@@ -1,0 +1,52 @@
+{
+  "source": "Public production log.v3.json endpoints",
+  "checks": "Chrome JSON Schema Draft 7 validation with format checking; required fields; public-key SHA-256 matches Log ID; Static CT MMD <= 60 seconds; endpoint agreement; contiguous temporal intervals.",
+  "logs": [
+    {
+      "log": "ct-2026h2",
+      "source": "https://ct-2026h2-bucket.sheca.com/log.v3.json",
+      "log_id": "Cglgyjk8Pg1ai0LqtC6Hz8kaqvzEmpODSRNm3IelIqo=",
+      "mmd_seconds": 60,
+      "status": "active",
+      "status_timestamp": "2026-09-21T00:00:00Z",
+      "public_key_hash_matches_log_id": true
+    },
+    {
+      "log": "ct-2027h1",
+      "source": "https://ct-2027h1-bucket.sheca.com/log.v3.json",
+      "log_id": "/6sV+04gOrNi7YekbpOjxEN0g7eWMLB4ZcY2qA4os04=",
+      "mmd_seconds": 60,
+      "status": "active",
+      "status_timestamp": "2026-09-21T00:00:00Z",
+      "public_key_hash_matches_log_id": true
+    },
+    {
+      "log": "ct-2027h2",
+      "source": "https://ct-2027h2-bucket.sheca.com/log.v3.json",
+      "log_id": "4dKdGNWYRqtrkGI4apITCdTpLfH53HY9uCEBs7uuIdc=",
+      "mmd_seconds": 60,
+      "status": "active",
+      "status_timestamp": "2026-09-21T00:00:00Z",
+      "public_key_hash_matches_log_id": true
+    },
+    {
+      "log": "ct-2028h1",
+      "source": "https://ct-2028h1-bucket.sheca.com/log.v3.json",
+      "log_id": "sDXT6fTaACkCGHHEW6UpidrdUb2Mnota0zrt0LP1xC0=",
+      "mmd_seconds": 60,
+      "status": "active",
+      "status_timestamp": "2026-09-21T00:00:00Z",
+      "public_key_hash_matches_log_id": true
+    },
+    {
+      "log": "ct-2028h2",
+      "source": "https://ct-2028h2-bucket.sheca.com/log.v3.json",
+      "log_id": "6yfKv1JFhTd94npcCJdaCgAuI9K98ksx0URHxEzTYDM=",
+      "mmd_seconds": 60,
+      "status": "active",
+      "status_timestamp": "2026-09-21T00:00:00Z",
+      "public_key_hash_matches_log_id": true
+    }
+  ],
+  "schema_validation": "passed: operator.json and all five log metadata files"
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://googlechrome.github.io/CertificateTransparency/operator_list_schema_v1.json",
+  "operator_name": "SHECA",
+  "logs": [
+    "https://ct-2026h2-bucket.sheca.com/log.v3.json",
+    "https://ct-2027h1-bucket.sheca.com/log.v3.json",
+    "https://ct-2027h2-bucket.sheca.com/log.v3.json",
+    "https://ct-2028h1-bucket.sheca.com/log.v3.json",
+    "https://ct-2028h2-bucket.sheca.com/log.v3.json"
+  ]
+}
