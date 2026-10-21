@@ -4,6 +4,8 @@ English | [Simplified Chinese](readme_cn.md)
 
 This document describes the existing deployment based on the provided test and production `sunlight.yaml` files and deployment details. Configuration files are stored separately for each environment. The remote services have not been verified at runtime as part of this documentation work.
 
+Server IP addresses have been replaced with documentation examples (`192.0.2.10` and `2001:db8::10`). Replace them with the actual local listening addresses before deployment.
+
 S3 endpoint hostnames have been redacted as `https://s3-endpoint.example.invalid`. Replace this placeholder with the actual endpoint before deployment.
 
 ## 1. Project and Deployment Overview
@@ -48,8 +50,8 @@ Configuration file: [sunlight-testing.yaml](config/sunlight-testing.yaml).
 
 ```yaml
 listen:
-  - "10.43.1.117:8080"
-    #  - "[240b:4000:92:fd00:37a9:37af:feb1:a3ae]:8080"
+  - "192.0.2.10:8080"
+    #  - "[2001:db8::10]:8080"
     #acme:
     #hosts:
     #- ct-test.sunlight.sheca.com
@@ -143,8 +145,8 @@ Configuration file: [sunlight-production.yaml](config/sunlight-production.yaml).
 
 ```yaml
 listen:
-  - "10.43.1.117:8080"
-    #  - "[240b:4000:92:fd00:37a9:37af:feb1:a3ae]:8080"
+  - "192.0.2.10:8080"
+    #  - "[2001:db8::10]:8080"
     #acme:
     #hosts:
     #- ct-test.sunlight.sheca.com
