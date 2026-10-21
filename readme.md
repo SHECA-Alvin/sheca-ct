@@ -1,38 +1,40 @@
-# Sunlight CT 环境说明
+# Sunlight CT Environment Guide
 
-本文根据提供的测试、正式环境 `sunlight.yaml` 和部署描述整理，用于记录现有部署。配置文件已按环境分别保存；本文未对远程服务进行运行验证。
+English | [简体中文](readme_cn.md)
 
-配置中的 S3 endpoint 域名已脱敏为 `https://s3-endpoint.example.invalid`，实际部署时需替换为真实 endpoint。
+This document describes the existing deployment based on the provided test and production `sunlight.yaml` files and deployment details. Configuration files are stored separately for each environment. The remote services have not been verified at runtime as part of this documentation work.
 
-## 1. 项目与部署概况
+S3 endpoint hostnames have been redacted as `https://s3-endpoint.example.invalid`. Replace this placeholder with the actual endpoint before deployment.
 
-- 项目：[FiloSottile/sunlight](https://github.com/FiloSottile/sunlight)
-- 版本：根据提供的服务器目录记录为 `sunlight-0.9.0`，未核验运行中的二进制版本。
-- 正式和测试环境区域：均为新加坡。
-- 正式环境 Sunlight 服务器：24 核 CPU、64 GB 内存。
-- 测试环境 Sunlight 服务器：16 核 CPU、32 GB 内存。
-- 测试与正式环境采用相同架构：WAF → Nginx → Sunlight，CDN → OSS。
-- 本地存储：SQLite checkpoint 数据库、各日志独立的 SQLite 去重缓存、各日志的密钥种子文件。
-- 日志数据存储：阿里云 OSS，通过 S3 兼容接口写入。
-- 提交链路：证书提交方 → 云 WAF → Nginx → Sunlight。
-- 读取链路：监控客户端 → 云 CDN → OSS；CDN 缓存命中时直接响应。
+## 1. Project and Deployment Overview
 
-测试与正式环境的架构相同。Nginx 是否与 Sunlight 同机、各跳 TLS 终止位置尚未确认。
+- Project: [FiloSottile/sunlight](https://github.com/FiloSottile/sunlight)
+- Version: recorded as `sunlight-0.9.0` based on the provided server directory name; the running binary version has not been verified.
+- Region: both production and test environments are in Singapore.
+- Production Sunlight server: 24 CPU cores and 64 GB RAM.
+- Test Sunlight server: 16 CPU cores and 32 GB RAM.
+- Both environments use the same architecture: WAF → Nginx → Sunlight, and CDN → OSS.
+- Local storage: a SQLite checkpoint database, a separate SQLite deduplication cache for each log, and per-log secret seed files.
+- Log data storage: Alibaba Cloud OSS, accessed through its S3-compatible API.
+- Submission path: certificate submitters → cloud WAF → Nginx → Sunlight.
+- Read path: monitoring clients → cloud CDN → OSS; cache hits are served directly by the CDN.
 
-## 2. 共用架构图
+The test and production environments have the same topology. Whether Nginx and Sunlight run on the same host, and where TLS terminates along each hop, have not been confirmed.
 
-正式与测试环境采用相同架构，均部署在新加坡。下图统一展示两套环境的拓扑，每套环境分别使用对应的服务器、日志与配置。
+## 2. Common Architecture
 
-- 正式环境 Sunlight 服务器：**24 核 CPU / 64 GB 内存**。
-- 测试环境 Sunlight 服务器：**16 核 CPU / 32 GB 内存**。
+Both environments use the same architecture and are deployed in Singapore. The diagram below represents the topology of each environment, with its respective servers, logs, and configuration.
 
-图中不显示 IP 地址和域名。箭头表示请求或写入方向，响应沿原路返回。
+- Production Sunlight server: **24 CPU cores / 64 GB RAM**.
+- Test Sunlight server: **16 CPU cores / 32 GB RAM**.
+
+The diagram contains no IP addresses or domain names. Arrows indicate requests or writes; responses return along the same path.
 
 ![Sunlight CT Common Architecture — Production and Test](docs/images/sunlight-common-architecture.png)
 
-## 3. 日志分片配置
+## 3. Log Shard Configuration
 
-| 分片 | 测试日志 / Bucket | 正式日志 / Bucket | `notafterstart` | `notafterlimit` |
+| Shard | Test Log / Bucket | Production Log / Bucket | `notafterstart` | `notafterlimit` |
 | --- | --- | --- | --- | --- |
 | 2026h2 | `ct-test-2026h2` | `ct-2026h2` | `2026-07-01T00:00:00Z` | `2027-01-01T00:00:00Z` |
 | 2027h1 | `ct-test-2027h1` | `ct-2027h1` | `2027-01-01T00:00:00Z` | `2027-07-01T00:00:00Z` |
@@ -40,9 +42,9 @@
 | 2028h1 | `ct-test-2028h1` | `ct-2028h1` | `2028-01-01T00:00:00Z` | `2028-07-01T00:00:00Z` |
 | 2028h2 | `ct-test-2028h2` | `ct-2028h2` | `2028-07-01T00:00:00Z` | `2029-01-01T00:00:00Z` |
 
-## 4. 测试环境完整配置
+## 4. Complete Test Configuration
 
-独立文件：[sunlight-testing.yaml](config/sunlight-testing.yaml)。
+Configuration file: [sunlight-testing.yaml](config/sunlight-testing.yaml).
 
 ```yaml
 listen:
@@ -135,9 +137,9 @@ logs:
     notafterlimit: 2029-01-01T00:00:00Z
 ```
 
-## 5. 正式环境完整配置
+## 5. Complete Production Configuration
 
-独立文件：[sunlight-production.yaml](config/sunlight-production.yaml)。
+Configuration file: [sunlight-production.yaml](config/sunlight-production.yaml).
 
 ```yaml
 listen:
